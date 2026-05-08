@@ -115,6 +115,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 # PREPROCESSING FUNCTION
 # =========================
 def preprocess_input():
+    # 1. تجهيز الداتا من الـ Widgets
     data = {
         "gender": 1 if gender == "Male" else 0,
         "SeniorCitizen": 1 if senior else 0,
@@ -123,21 +124,39 @@ def preprocess_input():
         "tenure": tenure,
         "PhoneService": 1 if phoneservice == "Yes" else 0,
         "PaperlessBilling": 1 if paperless == "Yes" else 0,
-        "InternetService": internet,
-        "OnlineSecurity": online_security,
-        "TechSupport": tech_support,
-        "StreamingTV": streaming_tv,
-        "Contract": contract,
-        "PaymentMethod": payment,
         "MonthlyCharges": monthly,
-        "TotalCharges": total
+        "TotalCharges": total,
+        
+        # تحويل الاختيارات لـ أرقام (Mapping)
+        "InternetService": {"No": 0, "DSL": 1, "Fiber optic": 2}[internet],
+        "Contract": {"Month-to-month": 0, "One year": 1, "Two year": 2}[contract],
+        "PaymentMethod": {
+            "Electronic check": 0, 
+            "Mailed check": 1, 
+            "Bank transfer (automatic)": 2, 
+            "Credit card (automatic)": 3
+        }[payment],
+        
+        # إعدادات متقدمة (Yes/No)
+        "OnlineSecurity": 1 if online_security == "Yes" else 0,
+        "TechSupport": 1 if tech_support == "Yes" else 0,
+        "StreamingTV": 1 if streaming_tv == "Yes" else 0,
+        
+        # أي أعمدة تانية الموديل محتاجها ضيفيها كأصفار لو مش موجودة
+        "MultipleLines": 0,
+        "OnlineBackup": 0,
+        "DeviceProtection": 0,
+        "StreamingMovies": 0
     }
+    
     df = pd.DataFrame([data])
     
-    # السطر السحري اللي بيظبط الترتيب والنسبة
+    # 2. السطر السحري لترتيب الأعمدة
     if model:
         df = df.reindex(columns=model.feature_names_in_, fill_value=0)
-    return df
+    
+    # 3. التأكد أن كل القيم أرقام (Floats)
+    return df.astype(float)
 
 # =========================
 # TRIGGER PREDICTION
