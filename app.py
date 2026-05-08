@@ -250,6 +250,10 @@ if st.button("🚀 ANALYZE CUSTOMER BEHAVIOR"):
 # =========================
 # FOOTER
 # =========================
-st.markdown("<br><br>", unsafe_allow_html=True)
-st.markdown("<div style='text-align: center; color: #475569;'>Designed by Elite AI Systems © 2024</div>",
-            unsafe_allow_html=True)
+st.markdown("<br><hr>", unsafe_allow_html=True) # إضافة خط فاصل رفيع
+st.markdown("""
+    <div style='text-align: center; color: #94a3b8; font-family: sans-serif; font-size: 14px;'>
+        Developed by <b style='color: #00f5ff;'>Toka Nasr</b> | 
+        © 2026 AI Intelligence Systems
+    </div>
+""", unsafe_allow_html=True)
