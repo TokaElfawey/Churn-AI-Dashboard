@@ -250,10 +250,11 @@ if st.button("🚀 ANALYZE CUSTOMER BEHAVIOR"):
 # =========================
 # FOOTER
 # =========================
-st.markdown("<br><hr>", unsafe_allow_html=True) # إضافة خط فاصل رفيع
+st.markdown("<br><hr>", unsafe_allow_html=True)
 st.markdown("""
     <div style='text-align: center; color: #94a3b8; font-family: sans-serif; font-size: 14px;'>
-        Developed by <b style='color: #00f5ff;'>Toka Nasr</b> | 
-        © 2026 AI Intelligence Systems
+        Developed with ❤️ by <b style='color: #00f5ff;'>Section 1 Team</b><br>
+        <span style='font-size: 12px;'>Toka Nasr | Aya Ahmed | Toka Alaa | Bavly Hany | Paula Moukhtar</span><br>
+        © 2026 Academic Project
     </div>
 """, unsafe_allow_html=True)
