@@ -175,7 +175,7 @@ if st.button("🚀 ANALYZE CUSTOMER BEHAVIOR"):
             res_col1, res_col2 = st.columns([1, 1])
 
             with res_col1:
-                if proba > 0.35:
+                if proba > 0.30:
                     st.markdown(f"""
                     <div class='result-box' style='background: rgba(255, 59, 48, 0.15); border: 2px solid #ff3b30;'>
                         <h2 style='color: #ff3b30; margin:0;'>⚠️ HIGH RISK</h2>
